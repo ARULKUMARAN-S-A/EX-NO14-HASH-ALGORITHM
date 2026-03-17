@@ -1,5 +1,6 @@
 # EX-NO14-HASH-ALGORITHM
-
+# Name : ARUL KUMARAN S A
+# Reg No: 212224040030
 ## AIM:
 To implement HASH ALGORITHM
 
@@ -27,9 +28,43 @@ To implement HASH ALGORITHM
 
 
 ## Program:
+```
+#include <stdio.h>
+#include <string.h>
+void computeSimpleHash(const char *message, unsigned char *hash) {
+    unsigned char temp = 0;
+    for (int i = 0; message[i] != '\0'; i++) {
+        temp = temp ^ message[i]; 
+        temp += message[i];       
+    }
+    *hash = temp;
+}
+int main() {
+    char message[256];     
+    unsigned char hash;     
+    char receivedHash[3];
+    printf("Enter the message: ");
+    scanf("%s", message);
+    computeSimpleHash(message, &hash);
+    printf("Computed Hash (in hex): %02x\n", hash);
+    printf("Enter the received hash (in hex): ");
+    scanf("%s", receivedHash);
+    unsigned int receivedHashValue;
+    sscanf(receivedHash, "%02x", &receivedHashValue);
+    if (hash == receivedHashValue) {
+        printf("Hash verification successful. Message is unchanged.\n");
+    } else {
+        printf("Hash verification failed. Message has been altered.\n");
+    }
 
+    return 0;
+}
+```
 
 ## Output:
+<img width="1723" height="973" alt="image" src="https://github.com/user-attachments/assets/3d2eeadf-0a8d-45b0-992f-07c9729462eb" />
+
+
 
 ## Result:
 The program is executed successfully.
